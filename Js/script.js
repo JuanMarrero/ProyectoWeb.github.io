@@ -32,20 +32,38 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function mostrarErrores(errores) {
-        var errorHtml = '<ul>';
+        var erroresDiv = document.getElementById('errores');
+        erroresDiv.innerHTML = '';  // Limpiar los errores previos
+        var ul = document.createElement('ul');
+        
         errores.forEach(function (error) {
-            errorHtml += '<li>' + error + '</li>';
+            var li = document.createElement('li');
+            li.textContent = error;
+            ul.appendChild(li);
         });
-        errorHtml += '</ul>';
-        document.getElementById('errores').innerHTML = errorHtml;
+    
+        erroresDiv.appendChild(ul);
     }
 
     function mostrarDatosEnviados(nombre, email, mensaje) {
-        var datosHtml = '<h2>Datos Enviados:</h2>';
-        datosHtml += '<p><strong>Nombre:</strong> ' + nombre + '</p>';
-        datosHtml += '<p><strong>Email:</strong> ' + email + '</p>';
-        datosHtml += '<p><strong>Mensaje:</strong> ' + mensaje + '</p>';
-        document.getElementById('datos-enviados').innerHTML = datosHtml;
+        var datosEnviadosDiv = document.getElementById('datos-enviados');
+        datosEnviadosDiv.innerHTML = '';  // Limpiar los datos previos
+    
+        var h2 = document.createElement('h2');
+        h2.textContent = 'Datos Enviados:';
+        datosEnviadosDiv.appendChild(h2);
+    
+        var pNombre = document.createElement('p');
+        pNombre.innerHTML = '<strong>Nombre:</strong> ' + nombre;
+        datosEnviadosDiv.appendChild(pNombre);
+    
+        var pEmail = document.createElement('p');
+        pEmail.innerHTML = '<strong>Email:</strong> ' + email;
+        datosEnviadosDiv.appendChild(pEmail);
+    
+        var pMensaje = document.createElement('p');
+        pMensaje.innerHTML = '<strong>Mensaje:</strong> ' + mensaje;
+        datosEnviadosDiv.appendChild(pMensaje);
     }
 
     // Hacer la función validarFormulario accesible desde el HTML
