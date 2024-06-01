@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    function validarFormulario() {
+    window.validarFormulario = function () {
         // Obtener los valores de los campos
         var nombre = document.getElementById('nombre').value.trim();
         var email = document.getElementById('email').value.trim();
@@ -50,21 +50,22 @@ document.addEventListener('DOMContentLoaded', function () {
         datosEnviadosDiv.innerHTML = '';  // Limpiar los datos previos
     
         var h2 = document.createElement('h2');
-        h2.textContent = 'Datos Enviados:';
+        h2.textContent = 'Datos Enviados';
         datosEnviadosDiv.appendChild(h2);
     
         var pNombre = document.createElement('p');
-        pNombre.innerHTML = '<strong>Nombre:</strong> ' + nombre;
+        pNombre.textContent = 'Nombre: ' + nombre;
         datosEnviadosDiv.appendChild(pNombre);
     
         var pEmail = document.createElement('p');
-        pEmail.innerHTML = '<strong>Email:</strong> ' + email;
+        pEmail.textContent = 'Email: ' + email;
         datosEnviadosDiv.appendChild(pEmail);
     
         var pMensaje = document.createElement('p');
-        pMensaje.innerHTML = '<strong>Mensaje:</strong> ' + mensaje;
+        pMensaje.textContent = 'Mensaje: ' + mensaje;
         datosEnviadosDiv.appendChild(pMensaje);
     }
+});
 
     // Hacer la función validarFormulario accesible desde el HTML
     window.validarFormulario = validarFormulario;
@@ -101,4 +102,3 @@ showImage(carru);
 // Hacer las funciones nextImage y prevImage accesibles desde el HTML
 window.nextImage = nextImage;
 window.prevImage = prevImage;
-});
