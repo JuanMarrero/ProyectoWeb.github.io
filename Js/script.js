@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    window.validarFormulario = function () {
+    function validarFormulario() {
         // Obtener los valores de los campos
         var nombre = document.getElementById('nombre').value.trim();
         var email = document.getElementById('email').value.trim();
@@ -32,40 +32,21 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function mostrarErrores(errores) {
-        var erroresDiv = document.getElementById('errores');
-        erroresDiv.innerHTML = '';  // Limpiar los errores previos
-        var ul = document.createElement('ul');
-        
+        var errorHtml = '<ul>';
         errores.forEach(function (error) {
-            var li = document.createElement('li');
-            li.textContent = error;
-            ul.appendChild(li);
+            errorHtml += '<li>' + error + '</li>';
         });
-    
-        erroresDiv.appendChild(ul);
+        errorHtml += '</ul>';
+        document.getElementById('errores').innerHTML = errorHtml;
     }
 
     function mostrarDatosEnviados(nombre, email, mensaje) {
-        var datosEnviadosDiv = document.getElementById('datos-enviados');
-        datosEnviadosDiv.innerHTML = '';  // Limpiar los datos previos
-    
-        var h2 = document.createElement('h2');
-        h2.textContent = 'Datos Enviados';
-        datosEnviadosDiv.appendChild(h2);
-    
-        var pNombre = document.createElement('p');
-        pNombre.textContent = 'Nombre: ' + nombre;
-        datosEnviadosDiv.appendChild(pNombre);
-    
-        var pEmail = document.createElement('p');
-        pEmail.textContent = 'Email: ' + email;
-        datosEnviadosDiv.appendChild(pEmail);
-    
-        var pMensaje = document.createElement('p');
-        pMensaje.textContent = 'Mensaje: ' + mensaje;
-        datosEnviadosDiv.appendChild(pMensaje);
+        var datosHtml = '<h2>Datos Enviados:</h2>';
+        datosHtml += '<p><strong>Nombre:</strong> ' + nombre + '</p>';
+        datosHtml += '<p><strong>Email:</strong> ' + email + '</p>';
+        datosHtml += '<p><strong>Mensaje:</strong> ' + mensaje + '</p>';
+        document.getElementById('datos-enviados').innerHTML = datosHtml;
     }
-});
 
     // Hacer la función validarFormulario accesible desde el HTML
     window.validarFormulario = validarFormulario;
@@ -102,3 +83,6 @@ showImage(carru);
 // Hacer las funciones nextImage y prevImage accesibles desde el HTML
 window.nextImage = nextImage;
 window.prevImage = prevImage;
+});
+
+
